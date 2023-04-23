@@ -1,16 +1,43 @@
-<h1>Galpões & Estoque</h1>
+<div class="content-title">
+    <h1>Galpões</h1>
+</div>
 
-<% @warehouses.each do |w|%>
-    <%= link_to w.name, warehouse_path(w) %>
-    <%= w.code%>
-    <%= w.city%>
-    <%= w.area %> m²
-<%end%>
+<div>
+    <%= link_to "Cadastrar Galpão ", new_warehouse_path%>
+</div>
+    <%
+=begin%>
+ <% if flash[:notice]%>
+        <strong><%=flash[:notice]%></strong>
+    <%end%> 
+<%
+=end%>
+<section id="warehouses">
 
-<% if @warehouses.empty?%>
-    <p>Não há galpão cadastrado</p>
+    <% @warehouses.each do |w|%>
+        <div class = "card">
+            <div class="card-content">
+                <ul>
+                    <li><%= w.code%></li>
+                    <li><%= w.city%></li>
+                    <li><%= w.area%> m²</li>
+                    <li><%= w.address%></li>
+                </ul>
+            </div>
+            <div class="card-image">
+                <img src = "https://liftlearning.com/wp-content/uploads/2020/09/default-image.png"/>
+            </div>
+            <div class="card-link">
+                <%= link_to w.name , warehouse_path(w) %>
+            </div>
+        </div>
+    <%end%>
 
-<%end%>
+    <% if @warehouses.empty?%>
+        <p>Não há galpão cadastrado</p>
+    <%end%>
+</section>
+
 
 
 

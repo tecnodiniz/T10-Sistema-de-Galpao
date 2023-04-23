@@ -9,19 +9,26 @@ describe 'Usuario visita tela inicial' do
         visit('/')
 
         # Assert
-        expect(page).to have_css('h1',text:'Galpões & Estoque')
+        expect(page).to have_content('Galpões & Estoque')
 
     end
     it 'e vê os galpões cadastrados' do
         # Arrange
-        Warehouse.create(name: 'Rio', code: 'SDU', city:'Rio de Janeiro',area: 60_000)
-        Warehouse.create(name: 'Maceio', code: 'MCZ', city:'Maceio',area: 50_000)
+        Warehouse.create(name: 'Rio', code: 'SDU', city:'Rio de Janeiro',area: 60_000,
+        address: 'Av Galpão do Rio, 1000',
+        cep: '12000-000',
+        description: 'Perto do aéroporto')
+        Warehouse.create(name: 'Maceio', code: 'MCZ', city:'Maceio',area: 50_000,
+        address: 'Rua das Alamedas, 2000',
+        cep:'30000-000',
+        description: 'Perto do aéroporto')
 
 
         # Act
         visit('/')
 
         # Assert
+        expect(page).not_to have_content('Não há galpão cadastrado')
         expect(page).to have_content('Rio')
         expect(page).to have_content('SDU')
         expect(page).to have_content('Rio de Janeiro')
@@ -36,7 +43,7 @@ describe 'Usuario visita tela inicial' do
     it 'e vê mensagem caso não há nenhum galpão cadastrado' do
         
         visit ('/')
-        expect(page).to have_css('p',text:'Não há galpão cadastrado')
+        expect(page).to have_content('Não há galpão cadastrado')
         
     end
 end

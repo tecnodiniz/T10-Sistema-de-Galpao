@@ -1,8 +1,19 @@
-Galpão <%=@warehouse.code%>
-Nome: <%=@warehouse.name%>
-Cidade: <%=@warehouse.city %>
-Área: <%=@warehouse.area %> m²
-Endereço: <%=@warehouse.address%> CEP: <%= @warehouse.cep%>
-<%=@warehouse.description %>
+<section id = "warehouse-details">
+    <div class="warehouse-content">
+        <h1>Galpão <%= @warehouse.code%></h1></br>
+        <strong>Nome: <%= @warehouse.name%></strong></br>
+        <small>Endereço: <%= @warehouse.address%></small><strong> CEP: <%= @warehouse.cep%></strong></br>
+        <small>Cidade: <%= @warehouse.city%></small></br>
+        <p>Descrição: <%= @warehouse.description%></p></br>
+        <p>Área: <%= @warehouse.area%> m²</p></br>
+    </div>
+
+    <div class="warehouse-content-image">
+        <img src = "https://liftlearning.com/wp-content/uploads/2020/09/default-image.png"/>
+    </div>
+
+</section>
+
+
 
 <%= link_to "Voltar", root_path %>
