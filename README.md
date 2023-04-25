@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Um sitema de gerenciamento de Galpõs criado usando Rails e explorando a usabilidade de TDD.
 
 Things you may want to cover:
 
