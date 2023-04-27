@@ -31,7 +31,7 @@ describe 'Usuário cadastra um galpão' do
         fill_in "Endereço",	with: "Av. Do Museu do amanhã, 1000"
         fill_in "CEP",	with: "20100-000" 
         fill_in "Descrição",    with: "Galpão da zona portuária do Rio." 
-        click_on 'Cadastrar'    
+        click_on 'Criar Galpão'   
 
         #Assert
         expect(current_path).to eq root_path
@@ -56,12 +56,17 @@ describe 'Usuário cadastra um galpão' do
         fill_in "Endereço",	with: ""
         fill_in "CEP",	with: "" 
 
-        click_on 'Cadastrar'
+        click_on 'Criar Galpão'
 
-        expect(page).to have_content 'Falha ao cadastrar'
+        expect(page).to have_content 'Nome não pode ficar em branco'
+        expect(page).to have_content 'Código não pode ficar em branco'
+        expect(page).to have_content 'Cidade não pode ficar em branco'
+        expect(page).to have_content 'Area não pode ficar em branco'
+        expect(page).to have_content 'Endereço não pode ficar em branco'
+        expect(page).to have_content 'CEP não pode ficar em branco'
 
     end
-    it 'manter informações ao recarregar página após erro de cadastro' do 
+    it 'com cep no formato 00000-000' do 
 
         visit root_path
         click_on 'Cadastrar Galpão'
@@ -70,12 +75,12 @@ describe 'Usuário cadastra um galpão' do
         fill_in "Código",	with: "RIO"
         fill_in "Cidade",	with: "Rio de Janeiro" 
         fill_in "Área",	with: "32000"  
-        fill_in "Endereço",	with: ""
-        fill_in "CEP",	with: "" 
-        fill_in "Descrição",    with: "" 
+        fill_in "Endereço",	with: "Av. Do Museu do amanhã, 1000"
+        fill_in "CEP",	with: "12345" 
+        fill_in "Descrição",    with: "Galpão da zona portuária do Rio." 
+        click_on 'Criar Galpão' 
 
-        click_on 'Cadastrar'  
+        expect(page).to have_content 'Deve estar no formato 00000-000'
 
-        expect(page).to have_content 'Falha ao cadastrar'
     end
 end
