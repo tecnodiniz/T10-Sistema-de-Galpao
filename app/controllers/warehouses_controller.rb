@@ -35,6 +35,15 @@ class WarehousesController < ApplicationController
        end
         
     end
+    def destroy
+        warehouse = Warehouse.find(params[:id])
+        warehouse.delete
+        
+        redirect_to root_path, notice: 'Galpão removido com sucesso'
+
+    
+    end
+
 
     private 
 
@@ -47,5 +56,6 @@ class WarehousesController < ApplicationController
             :name,:code,:city,:description,:address, :cep, :area
         )
     end
+
 
 end
