@@ -42,7 +42,25 @@ describe 'Usuario edita galpão' do
             expect(page).to have_content('Galpão atualizado')
             expect(page).to have_content('Longe do aéroporto')
 
+    end
+    it 'E falha ao não preencher campos válidos' do
+         #Arrange
+         warehouse = Warehouse.create!(name: 'Maceio', code: 'MCZ', city:'Maceio',area: 50_000,
+            address: 'Rua das Alamedas, 2000',
+            cep:'30000-000',
+            description: 'Perto do aéroporto')
+        #Act
+            visit root_path
 
+            click_on 'Maceio'
+            click_on 'Editar'
 
+            fill_in "Código", with: ''
+            fill_in "Descrição", with: "Longe do aéroporto" 
+
+            click_on 'Atualizar Galpão'
+        #Assert
+            expect(page).to have_content('Não foi possível atualizar')
+            expect(page).to have_content('Longe do aéroporto')
     end
 end
