@@ -14,10 +14,10 @@ describe "Usuário visita tela de Fornecedores" do
     end
 
     it 'e vê fornecedores cadastrados' do 
-        s_1 = Supplier.create!(corporate_name: 'ACME LTDA', brand_name:'ACME', registration_number:'44047449865',
-                                full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'acme@yahoo.com.br')
-        s_2 = Supplier.create!(corporate_name: 'Arcos Douratos LTDA', brand_name:'Mc Donalds', registration_number:'498976725',
-            full_address:'Av do Arvoreiro, 3000',city:'Atibaia',state:'SP',email:'mcdonalds@gmail.com.br')
+        s_1 = Supplier.create!(corporate_name: 'ACME LTDA', brand_name:'ACME', registration_number:'0303698900181',
+                                full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'acme@yahoo.com.br' , cep: '12345-000')
+        s_2 = Supplier.create!(corporate_name: 'Arcos Douratos LTDA', brand_name:'Mc Donalds', registration_number:'0303698900281',
+            full_address:'Av do Arvoreiro, 3000',city:'Atibaia',state:'SP',email:'mcdonalds@gmail.com.br', cep: '12345-000')
 
         visit root_path
 
@@ -44,10 +44,10 @@ describe "Usuário visita tela de Fornecedores" do
     end
 
     it 'e vê informações detalhadas' do 
-        s_1 = Supplier.create!(corporate_name: 'ACME LTDA', brand_name:'ACME', registration_number:'44047449865',
-            full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'acme@yahoo.com.br')
-        s_2 = Supplier.create!(corporate_name: 'Arcos Douratos LTDA', brand_name:'Mc Donalds', registration_number:'498976725',
-        full_address:'Av do Arvoreiro, 3000',city:'Atibaia',state:'SP',email:'mcdonalds@gmail.com.br')
+        s_1 = Supplier.create!(corporate_name: 'ACME LTDA', brand_name:'ACME', registration_number:'0303698900181',
+            full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'acme@yahoo.com.br', cep: '12345-000')
+        s_2 = Supplier.create!(corporate_name: 'Arcos Douratos LTDA', brand_name:'Mc Donalds', registration_number:'0303698900281',
+        full_address:'Av do Arvoreiro, 3000',city:'Atibaia',state:'SP',email:'mcdonalds@gmail.com.br', cep:'12345-000')
 
         visit root_path
 
@@ -59,7 +59,7 @@ describe "Usuário visita tela de Fornecedores" do
         
         expect(page).to have_content 'ACME LTDA'
         expect(page).to have_content 'ACME'
-        expect(page).to have_content '44047449865'
+        expect(page).to have_content '0303698900181'
         expect(page).to have_content 'Av das Palmas, 1200'    
         expect(page).to have_content 'Bauru'   
         expect(page).to have_content 'SP'
