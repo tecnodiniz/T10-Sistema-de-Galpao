@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Usuario edita galpão' do
-    it 'A partir da página de detalhes' do
+    it 'a partir da página de detalhes' do
         #Arrange
         warehouse = Warehouse.create!(name: 'Maceio', code: 'MCZ', city:'Maceio',area: 50_000,
                                     address: 'Rua das Alamedas, 2000',
@@ -23,7 +23,7 @@ describe 'Usuario edita galpão' do
         expect(page).to have_field('Descrição', with:'Perto do aéroporto')
 
     end
-    it 'E edita o campo Descrição' do 
+    it 'e edita o campo Descrição' do 
         #Arrange
         warehouse = Warehouse.create!(name: 'Maceio', code: 'MCZ', city:'Maceio',area: 50_000,
             address: 'Rua das Alamedas, 2000',
@@ -43,7 +43,7 @@ describe 'Usuario edita galpão' do
             expect(page).to have_content('Longe do aéroporto')
 
     end
-    it 'E falha ao não preencher campos válidos' do
+    it 'e falha ao não preencher campos válidos' do
          #Arrange
          warehouse = Warehouse.create!(name: 'Maceio', code: 'MCZ', city:'Maceio',area: 50_000,
             address: 'Rua das Alamedas, 2000',

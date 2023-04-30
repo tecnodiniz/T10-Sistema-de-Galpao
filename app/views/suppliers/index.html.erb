@@ -1,0 +1,28 @@
+<section id = "suppliers">
+  <h1>Fornecedores</h1>
+<% if @suppliers.empty?%>
+    <strong>Não há fornecedores cadastrado</strong>
+<%end%>
+
+<%= link_to "Cadastrar fornecedor", new_supplier_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Endereço</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @suppliers.each do |s|%>
+    <tr>
+      <th scope="row"><%= s.id%></th>
+      <td> <%= link_to s.brand_name, supplier_path(s)%> </td>
+      <td><%= s.city%></td>
+    </tr>
+  <%end%>
+
+  </tbody>
+</table>
+
+</section>

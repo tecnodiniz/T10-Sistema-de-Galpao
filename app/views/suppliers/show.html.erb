@@ -1,0 +1,27 @@
+<section id = "supplier-details">
+    <div class="supplier-content">
+        <h2><%= @supplier.corporate_name%></h2>
+        <dl>
+            <dt>Nome fantasia</dt>
+            <dd> <%= @supplier.brand_name%> </dd>
+
+            <dt>Número de registro</dt>
+            <dd> <%= @supplier.registration_number%> </dd>
+
+            <dt>Endereço</dt>
+            <dd> <%= @supplier.full_address%> </dd>
+
+            <dt>Cidade</dt>
+            <dd> <%= @supplier.city%> </dd>
+
+            <dt>Estado</dt>
+            <dd> <%= @supplier.state%> </dd>
+
+            <dt>Email</dt>
+            <dd> <%= @supplier.email%> </dd>
+        </dl>
+    </div>
+
+    <%= link_to "Editar Fornecedor", edit_supplier_path(@supplier) %>
+</section>
+

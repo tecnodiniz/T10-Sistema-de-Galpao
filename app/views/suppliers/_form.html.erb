@@ -1,0 +1,25 @@
+<%= form_with model: @supplier do |s|%>
+
+    <%= s.label :corporate_name, 'Nome'%>
+    <%= s.text_field :corporate_name %>
+
+    <%= s.label :brand_name, 'Nome fantasia'%>
+    <%= s.text_field :brand_name %>
+
+    <%= s.label :registration_number, 'Número de registro'%>
+    <%= s.text_field :registration_number %>
+
+    <%= s.label :full_address, 'Endereço'%>
+    <%= s.text_field :full_address %>
+
+    <%= s.label :city, 'Cidade' %>
+    <%= s.text_field :city %>
+
+    <%= s.label :state, 'Estado' %>
+    <%= s.text_field :state %>
+
+    <%= s.label :email, 'Email' %>
+    <%= s.text_field :email %>
+
+    <%= s.submit  %>
+<%end%>
