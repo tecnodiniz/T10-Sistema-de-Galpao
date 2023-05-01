@@ -1,0 +1,30 @@
+<section id = "product_models">
+  <h1>Modelo de produtos</h1>
+<% if @product_models.empty?%>
+    <strong>Não há produtos cadastrado</strong>
+<%end%>
+
+<%= link_to "Cadastrar novo modelo de produto", new_product_model_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">SKU</th>
+      <th scope="col">Fornecedor</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @product_models.each do |product|%>
+    <tr>
+      <th scope="row"><%= product.id%></th>
+      <td> <%= link_to product.name, product_model_path(product)%> </td>
+      <td><%= product.sku%></td>
+       <td><%= product.supplier.brand_name%></td>
+    </tr>
+  <%end%>
+
+  </tbody>
+</table>
+
+</section>

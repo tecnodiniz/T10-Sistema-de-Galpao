@@ -1,0 +1,6 @@
+Produtos
+name 
+sku
+weight
+dimension
+supplier fk

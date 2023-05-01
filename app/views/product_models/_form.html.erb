@@ -1,0 +1,25 @@
+<%= form_with model: @product_model do |f|%>
+    <%= f.label :name, 'Nome'%>
+    <%= f.text_field :name%>
+
+    <%= f.label :sku, 'SKU'%>
+    <%= f.text_field :sku%>
+
+    <%= f.label :weight, 'Peso'%>
+    <%= f.number_field :weight%>
+
+    <%= f.label :width, 'Largura'%>
+    <%= f.number_field :width%>
+
+    <%= f.label :height, 'Altura'%>
+    <%= f.number_field :height%>
+
+    <%= f.label :depth, 'Profundidade'%>
+    <%= f.number_field :depth%>
+
+    <%= f.label :supplier_id, 'Fornecedor'%>
+    <%= f.collection_select :supplier_id, Supplier.order(:brand_name), :id, :brand_name%>
+
+   <%= f.submit 'Enviar'%>
+    
+<%end%>

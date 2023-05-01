@@ -3,4 +3,5 @@ class Supplier < ApplicationRecord
     validates :registration_number, length: { is: 13 }
     validates :registration_number, uniqueness: true
     validates_format_of :cep, with: /\A\d{5}-\d{3}\z/, message: "Deve estar no formato 00000-000"
+    has_many :product_models
 end
