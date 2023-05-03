@@ -1,5 +1,6 @@
 class SuppliersController < ApplicationController
     before_action :set_supplier, only:[:edit, :show, :update]
+    
     def index 
         @suppliers = Supplier.all
     end

@@ -28,6 +28,7 @@ class ProductModelsController < ApplicationController
         if @product_model.save
             redirect_to product_models_path, notice: 'Modelo de produto cadastrado com sucesso'
         else
+            flash[:notice] = "Falha ao criar produto"
             render 'new'
         end
 

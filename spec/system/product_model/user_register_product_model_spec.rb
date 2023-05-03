@@ -16,6 +16,7 @@ describe 'Usuário cadastra modelo de produto' do
         fill_in "Largura",	with: "70" 
         fill_in "Profundidade",	with: "10" 
         fill_in "SKU",	with: "TV32-SAMSU-XPTO92"
+
         select 'Samsung', from: 'Fornecedor' 
 
         click_on 'Enviar'
@@ -25,7 +26,29 @@ describe 'Usuário cadastra modelo de produto' do
         expect(page).to have_content 'TV32-SAMSU-XPTO92'
         expect(page).to have_content 'Samsung'
 
-          
+    end
+    
+    it 'e não preenche todos os campos' do 
+        supplier = Supplier.create!(corporate_name: 'Samsung Eletronicos', brand_name:'Samsung', registration_number:'0303698900181',
+            full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'samsung@yahoo.com.br' , cep: '12345-000')
+
+        visit root_path
+
+        click_on 'Produtos'
+        click_on 'Cadastrar novo modelo de produto'
+
+        fill_in "Nome",	with: "" 
+        fill_in "Peso",	with: "8000" 
+        fill_in "Altura",	with: "45" 
+        fill_in "Largura",	with: "70" 
+        fill_in "Profundidade",	with: "10" 
+        fill_in "SKU",	with: "TV32-SAMSU-XPTO92"
+
+        select 'Samsung', from: 'Fornecedor' 
+
+        click_on 'Enviar'
+        
+        expect(page).to have_content 'Falha ao criar produto'
 
     end
 
