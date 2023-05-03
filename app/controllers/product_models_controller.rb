@@ -1,6 +1,6 @@
 class ProductModelsController < ApplicationController
     
-    before_action :set_product_model, only:[:show]
+    before_action :set_product_model, only:[:show, :edit,:update]
     def index 
         @product_models = ProductModel.all
     end
@@ -9,6 +9,17 @@ class ProductModelsController < ApplicationController
 
     def new 
         @product_model = ProductModel.new
+    end
+    def edit;end
+
+    def update 
+        if @product_model.update(product_model_params)
+            redirect_to product_model_path(@product_model)
+        else
+            flash[:notice] = "Não foi possível atualizar"
+            render 'edit'
+        end
+        
     end
 
     def create 

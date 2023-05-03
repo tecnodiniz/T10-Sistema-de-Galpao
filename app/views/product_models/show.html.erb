@@ -1,0 +1,16 @@
+<section id = "product-model-details">
+    <div class="product-model-content">
+    <h1> <%= @product_model.name%> </h1>
+    SKU: <%= @product_model.sku%>
+    Peso: <%= @product_model.weight%>g
+    Altura: <%= @product_model.height%>cm
+    Largura: <%= @product_model.width%>cm
+    Profundidade: <%= @product_model.depth%>cm
+    Fornecedor: <%= @product_model.supplier.brand_name%> 
+
+    <div class="action">
+        <%= link_to "Editar produto", edit_product_model_path(@product_model) %>
+    <div>
+</section>
+
+

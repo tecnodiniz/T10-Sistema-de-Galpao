@@ -20,7 +20,7 @@
       <th scope="row"><%= product.id%></th>
       <td> <%= link_to product.name, product_model_path(product)%> </td>
       <td><%= product.sku%></td>
-       <td><%= product.supplier.brand_name%></td>
+        <td> <%= link_to product.supplier.brand_name, supplier_path(product.supplier)%> </td>
     </tr>
   <%end%>
 

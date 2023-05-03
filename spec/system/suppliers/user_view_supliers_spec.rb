@@ -16,6 +16,7 @@ describe "Usuário visita tela de Fornecedores" do
     it 'e vê fornecedores cadastrados' do 
         s_1 = Supplier.create!(corporate_name: 'ACME LTDA', brand_name:'ACME', registration_number:'0303698900181',
                                 full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'acme@yahoo.com.br' , cep: '12345-000')
+                                
         s_2 = Supplier.create!(corporate_name: 'Arcos Douratos LTDA', brand_name:'Mc Donalds', registration_number:'0303698900281',
             full_address:'Av do Arvoreiro, 3000',city:'Atibaia',state:'SP',email:'mcdonalds@gmail.com.br', cep: '12345-000')
 
