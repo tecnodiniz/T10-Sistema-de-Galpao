@@ -10,10 +10,10 @@ RSpec.describe ProductModel, type: :model do
           full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'samsung@yahoo.com.br' , cep: '12345-000')
 
           product_1 = ProductModel.new(name: '', weight: 8000, width:70, height:45, depth:10, 
-                          sku:'TV32-SAMSU-XPTO92', supplier: supplier)
+                          sku:'TV3229-SAMSU2-XPTO92', supplier: supplier)
           
           product_2 = ProductModel.new(name: 'SoundBar-7.1 Surrond', weight: 3000, width: 80, height:15, depth:15, 
-              sku:'SOU71-SAMSU-NOIZ77', supplier: supplier)
+              sku:'SOU71-S1A2MSU-NOIZ77', supplier: supplier)
         
 
           expect(product_1).not_to be_valid
@@ -26,7 +26,7 @@ RSpec.describe ProductModel, type: :model do
           full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'samsung@yahoo.com.br' , cep: '12345-000')
 
           product_1 = ProductModel.create!(name: 'TV 32', weight: 8000, width:70, height:45, depth:10, 
-                          sku:'TV32-SAMSU-XPTO92', supplier: supplier)
+                          sku:'TV3239-SA1MSU-XPTO92', supplier: supplier)
           
           product_2 = ProductModel.new(name: 'SoundBar-7.1 Surrond', weight: 3000, width: 80, height:15, depth:15, 
               sku:'TV32-SAMSU-XPTO92', supplier: supplier)

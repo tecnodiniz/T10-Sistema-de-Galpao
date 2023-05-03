@@ -15,7 +15,7 @@ describe 'Usuário cadastra modelo de produto' do
         fill_in "Altura",	with: "45" 
         fill_in "Largura",	with: "70" 
         fill_in "Profundidade",	with: "10" 
-        fill_in "SKU",	with: "TV32-SAMSU-XPTO92"
+        fill_in "SKU",	with: "TV32-S2AMS3U-X3PTO92"
 
         select 'Samsung', from: 'Fornecedor' 
 
@@ -23,7 +23,7 @@ describe 'Usuário cadastra modelo de produto' do
 
         expect(page).to have_content 'Modelo de produto cadastrado com sucesso'
         expect(page).to have_content 'TV 32'
-        expect(page).to have_content 'TV32-SAMSU-XPTO92'
+        expect(page).to have_content 'TV32-S2AMS3U-X3PTO92'
         expect(page).to have_content 'Samsung'
 
     end
@@ -42,7 +42,7 @@ describe 'Usuário cadastra modelo de produto' do
         fill_in "Altura",	with: "45" 
         fill_in "Largura",	with: "70" 
         fill_in "Profundidade",	with: "10" 
-        fill_in "SKU",	with: "TV32-SAMSU-XPTO92"
+        fill_in "SKU",	with: "TV32XA-SA4MSU-XPTO92"
 
         select 'Samsung', from: 'Fornecedor' 
 
