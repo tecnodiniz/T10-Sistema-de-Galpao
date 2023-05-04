@@ -21,3 +21,4 @@ ProductModel.create!(name: 'TV 32', weight: 8000, width:70, height:45, depth:10,
 
 ProductModel.create!(name: 'SoundBar-7.1 Surrond', weight: 3000, width: 80, height:15, depth:15, 
     sku:'SOU71-SAMSU-NOIZ77', supplier: supplier)
+
