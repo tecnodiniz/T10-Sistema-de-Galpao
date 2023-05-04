@@ -3,11 +3,13 @@ require 'rails_helper'
 describe "Usuario delete um galapão" do
     it 'Com sucesso' do 
         #Arrange
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
         Warehouse.create!(name: 'Santa Catarina', code: 'SDU', city:'Rio de Janeiro',area: 60_000,
             address: 'Av Galpão do Rio, 1000',
             cep: '12000-000',
             description: 'Perto do aéroporto')
         #Act
+        login_as(user)
         visit root_path
 
         click_on 'Santa Catarina'
@@ -25,16 +27,18 @@ describe "Usuario delete um galapão" do
 
     it 'e não apaga outros galpões' do 
         #Arrange
-           Warehouse.create!(name: 'Santa Catarina', code: 'SDU', city:'Rio de Janeiro',area: 60_000,
-            address: 'Av Galpão do Rio, 1000',
-            cep: '12000-000',
-            description: 'Perto do aéroporto')
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+        Warehouse.create!(name: 'Santa Catarina', code: 'SDU', city:'Rio de Janeiro',area: 60_000,
+        address: 'Av Galpão do Rio, 1000',
+        cep: '12000-000',
+        description: 'Perto do aéroporto')
 
         Warehouse.create!(name: 'Rio', code: 'RIO', city:'Rio de Janeiro',area: 60_000,
             address: 'Av Galpão do Rio, 1000',
             cep: '12000-000',
             description: 'Perto do aéroporto')
         #Act
+        login_as(user)
         visit root_path
 
         click_on 'Santa Catarina'

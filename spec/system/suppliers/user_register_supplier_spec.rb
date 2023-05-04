@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe 'Usuário cadastra fornecedor' do 
     it 'a partir da tela de fornecedor' do
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+        
+        login_as(user)
         visit root_path
 
         within('nav') do 
@@ -22,6 +25,9 @@ describe 'Usuário cadastra fornecedor' do
 
     it 'com sucesso' do 
 
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+
+        login_as(user)
         visit root_path
         within('nav') do 
             click_on 'Fornecedores'
@@ -46,6 +52,9 @@ describe 'Usuário cadastra fornecedor' do
     end
 
     it 'sem sucesso' do 
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+
+        login_as(user)
 
         visit root_path
         within('nav') do 
@@ -73,6 +82,9 @@ describe 'Usuário cadastra fornecedor' do
     end
 
     it 'com CNPJ inválido' do 
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+
+        login_as(user)
 
         visit root_path
         within('nav') do 
@@ -96,9 +108,12 @@ describe 'Usuário cadastra fornecedor' do
     end
 
     it 'com CNPJ em já cadastrado' do 
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
         s_2 = Supplier.create!(corporate_name: 'Arcos Douratos LTDA', brand_name:'Mc Donalds', registration_number:'0303698900181',
             full_address:'Av do Arvoreiro, 3000',city:'Atibaia',state:'SP',email:'mcdonalds@gmail.com.br', cep:'12345-000')
 
+        
+        login_as(user)
         visit root_path
         within('nav') do 
             click_on 'Fornecedores'

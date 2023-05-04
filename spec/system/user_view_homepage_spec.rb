@@ -14,6 +14,8 @@ describe 'Usuario visita tela inicial' do
     end
     it 'e vê os galpões cadastrados' do
         # Arrange
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+
         Warehouse.create(name: 'Rio', code: 'SDU', city:'Rio de Janeiro',area: 60_000,
         address: 'Av Galpão do Rio, 1000',
         cep: '12000-000',
@@ -25,6 +27,7 @@ describe 'Usuario visita tela inicial' do
 
 
         # Act
+        login_as(user)
         visit('/')
 
         # Assert
@@ -41,7 +44,8 @@ describe 'Usuario visita tela inicial' do
     end
 
     it 'e vê mensagem caso não há nenhum galpão cadastrado' do
-        
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+        login_as(user)
         visit ('/')
         expect(page).to have_content('Não há galpão cadastrado')
         

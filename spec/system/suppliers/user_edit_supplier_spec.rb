@@ -2,9 +2,12 @@ require 'rails_helper'
 
 describe 'Usuário edita fornecedor' do 
     it 'a partir da tela de detalhes' do
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
         s_1 = Supplier.create!(corporate_name: 'ACME LTDA', brand_name:'ACME', registration_number:'0303698900181',
             full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'acme@yahoo.com.br', cep: '12345-000')
 
+        
+        login_as(user)
         visit root_path
         within('nav') do 
             click_on 'Fornecedores'
@@ -23,9 +26,12 @@ describe 'Usuário edita fornecedor' do
 
   
     it 'e edita campo email' do
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
         s_1 = Supplier.create!(corporate_name: 'ACME LTDA', brand_name:'ACME', registration_number:'0303698900181',
             full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'acme@yahoo.com.br', cep: '12345-000')
 
+        
+        login_as(user)
         visit root_path
         within('nav') do 
             click_on 'Fornecedores'
@@ -42,9 +48,11 @@ describe 'Usuário edita fornecedor' do
     end
 
     it 'e falha ao atualizar' do 
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
         s_1 = Supplier.create!(corporate_name: 'ACME LTDA', brand_name:'ACME', registration_number:'0303698900181',
             full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'acme@yahoo.com.br', cep: '12345-000')
 
+        login_as(user)
         visit root_path
         within('nav') do 
             click_on 'Fornecedores'
