@@ -20,17 +20,12 @@
             <li> <%= link_to "Galpões", root_path %> </li>
             <li> <%= link_to "Fornecedores", suppliers_path %> </li>
              <li> <%= link_to "Produtos", product_models_path %> </li>
-            
           </ul>
           <div class = "nav-login">
-            <%if user_signed_in? %>
-              
-               <%= link_to "Sair", root_path%>
-              
+            <%if user_signed_in? %>  
+               <%= button_to "Sair", destroy_user_session_path, method: :delete %>
               <%else%>
               <%= link_to "Entrar", new_user_session_path %>
-             
-
             <%end%>
           
           </div>
@@ -43,6 +38,7 @@
     <p><%= alert %></p>
     
       <%= yield %>
+
     </main>
   </body>
 </html>

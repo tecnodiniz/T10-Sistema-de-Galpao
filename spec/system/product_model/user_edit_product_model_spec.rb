@@ -3,6 +3,9 @@ require 'rails_helper'
 describe 'Usuário edita modelo de produto' do 
     it 'com sucesso' do 
         #Arrange
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+        login_as(user)
+        
         supplier = Supplier.create!(corporate_name: 'Samsung Eletronicos', brand_name:'Samsung', registration_number:'0303698900181',
             full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'samsung@yahoo.com.br' , cep: '12345-000')
 

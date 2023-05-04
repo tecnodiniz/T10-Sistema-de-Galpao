@@ -1,7 +1,26 @@
 require 'rails_helper'
 
 describe 'Usuário visita tela de produtos' do 
+
+    it 'se estiver autenticado' do
+
+        #Arrange
+
+        #Act
+        visit root_path
+        within('nav') do 
+            click_on 'Produtos'
+        end
+        #Assert
+        expect(current_path).to eq new_user_session_path
+
+    end
+
     it 'A partir do menu' do 
+
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+       
+
         #Arrange
         supplier = Supplier.create!(corporate_name: 'Samsung Eletronicos', brand_name:'Samsung', registration_number:'0303698900181',
             full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'samsung@yahoo.com.br' , cep: '12345-000')
@@ -12,7 +31,10 @@ describe 'Usuário visita tela de produtos' do
         ProductModel.create!(name: 'SoundBar-7.1 Surrond', weight: 3000, width: 80, height:15, depth:15, 
             sku:'SOU71-SA2MASU-NOIZ77', supplier: supplier)
         #Act
+        login_as(user)
+        
         visit root_path
+
         within('nav') do 
             click_on 'Produtos'
         end
@@ -30,6 +52,8 @@ describe 'Usuário visita tela de produtos' do
 
     it 'e vê produto detalhado' do 
         #Arrange
+        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+
         supplier = Supplier.create!(corporate_name: 'Samsung Eletronicos', brand_name:'Samsung', registration_number:'0303698900181',
             full_address:'Av das Palmas, 1200',city:'Bauru',state:'SP',email:'samsung@yahoo.com.br' , cep: '12345-000')
 
@@ -39,6 +63,7 @@ describe 'Usuário visita tela de produtos' do
         ProductModel.create!(name: 'SoundBar-7.1 Surrond', weight: 3000, width: 80, height:15, depth:15, 
             sku:'SOU71-SAMASUX-NOIZ77', supplier: supplier)
         #Act
+        login_as(user)
         visit root_path
         within('nav') do 
             click_on 'Produtos'
