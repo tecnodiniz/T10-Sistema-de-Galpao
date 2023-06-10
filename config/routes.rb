@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'home#index'
 
-  resources :warehouses, only:[:show,:new, :create, :edit, :update, :destroy]
-  resources :suppliers, only:[:index, :show,:new,:create,:edit,:update]
-  resources :product_models, only:[:index, :show,:new,:edit, :create,:update]
-  resources :orders, only:[:new, :create, :show]
+  resources :warehouses, only: %i[show new create edit update destroy]
+  resources :suppliers, only: %i[index show new create edit update]
+  resources :product_models, only: %i[index show new edit create update]
+  resources :orders, only: %i[new create show edit update]
 end

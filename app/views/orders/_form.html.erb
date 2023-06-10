@@ -1,0 +1,16 @@
+<%= form_with model: @order do |f|%>
+    <div>
+        <%= f.label :warehouse_id, 'Galpão destino' %>
+        <%= f.collection_select :warehouse_id, Warehouse.order(:name), :id, :full_description %>
+        
+        <%= f.label :supplier_id, 'Fornecedor' %>
+        <%= f.collection_select :supplier_id, Supplier.order(:corporate_name), :id, :full_description %>
+
+        <%= f.label :estimate_delivery_date, 'Data prevista' %>
+        <%= f.date_field :estimate_delivery_date%>
+
+        <%= f.submit 'Gravar' %>
+    </div>
+    
+
+<%end%>

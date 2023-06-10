@@ -1,18 +1,9 @@
 <h1> Registrar Galpão </h1>
 
-<%= form_with model: @order do |f|%>
-    <div>
-        <%= f.label :warehouse_id, 'Galpão destino' %>
-        <%= f.collection_select :warehouse_id, Warehouse.order(:name), :id, :name %>
-        
-        <%= f.label :supplier_id, 'Fornecedor' %>
-        <%= f.collection_select :supplier_id, Supplier.order(:corporate_name), :id, :corporate_name %>
-
-        <%= f.label :estimate_delivery_date, 'Data prevista' %>
-        <%= f.text_field :estimate_delivery_date%>
-
-        <%= f.submit 'Gravar' %>
-    </div>
-    
-
+<%if @order.errors.any?%>
+    <%@order.errors.full_messages.each do |msg|%>
+        <%= msg%>
+    <%end%>
 <%end%>
+
+<%= render 'form' %>

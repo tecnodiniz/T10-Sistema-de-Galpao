@@ -19,6 +19,7 @@
         full_address: "Endereço"
         city: "Cidade"
         state: "SP"
-      product_model:
+      order:
+        estimate_delivery_date: 'Data de entrega'
         
       # will translate User attribute "login" as "Handle"

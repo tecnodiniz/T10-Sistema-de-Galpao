@@ -1,138 +1,133 @@
 require 'rails_helper'
 
-describe 'Usuário cadastra fornecedor' do 
-    it 'a partir da tela de fornecedor' do
-        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
-        
-        login_as(user)
-        visit root_path
+describe 'Usuário cadastra fornecedor' do
+  it 'a partir da tela de fornecedor' do
+    user = User.create!(email: 'eduardo@gmail.com', password: 'password123')
 
-        within('nav') do 
-            click_on 'Fornecedores'
-        end
-        
-        click_on 'Cadastrar fornecedor'
+    login_as(user)
+    visit root_path
 
-        expect(page).to have_field 'Nome'
-        expect(page).to have_field 'Nome fantasia'
-        expect(page).to have_field 'Número de registro'
-        expect(page).to have_field 'Endereço'
-        expect(page).to have_field 'Cidade'
-        expect(page).to have_field 'Estado'
-        expect(page).to have_field 'Email'
-        expect(page).to have_field 'CEP'
+    within('nav') do
+      click_on 'Fornecedores'
     end
 
-    it 'com sucesso' do 
+    click_on 'Cadastrar fornecedor'
 
-        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+    expect(page).to have_field 'Nome'
+    expect(page).to have_field 'Nome fantasia'
+    expect(page).to have_field 'Número de registro'
+    expect(page).to have_field 'Endereço'
+    expect(page).to have_field 'Cidade'
+    expect(page).to have_field 'Estado'
+    expect(page).to have_field 'Email'
+    expect(page).to have_field 'CEP'
+  end
 
-        login_as(user)
-        visit root_path
-        within('nav') do 
-            click_on 'Fornecedores'
-        end
-        click_on 'Cadastrar fornecedor'
+  it 'com sucesso' do
+    user = User.create!(email: 'eduardo@gmail.com', password: 'password123')
 
-        fill_in 'Nome', with: 'ACME LTDA'
-        fill_in 'Nome fantasia', with:'ACME'
-        fill_in 'Número de registro', with:'0303698900181'
-        fill_in 'Endereço', with:'Rua das Alamedas, 1200'
-        fill_in 'Cidade', with:'Bauru'
-        fill_in 'Estado', with:'SP'
-        fill_in 'Email', with:'acme@yahoo.com.br'
-        fill_in 'CEP', with:'12345-123'
-
-        click_on 'Criar Fornecedor'
-
-        expect(current_path).to eq suppliers_path
-        expect(page).to have_content 'Fornecedor cadastrado com sucesso'
-        expect(page).to have_content 'ACME'
-        expect(page).to have_content 'Bauru'
+    login_as(user)
+    visit root_path
+    within('nav') do
+      click_on 'Fornecedores'
     end
+    click_on 'Cadastrar fornecedor'
 
-    it 'sem sucesso' do 
-        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+    fill_in 'Nome', with: 'ACME LTDA'
+    fill_in 'Nome fantasia', with: 'ACME'
+    fill_in 'Número de registro', with: '0303698900181'
+    fill_in 'Endereço', with: 'Rua das Alamedas, 1200'
+    fill_in 'Cidade', with: 'Bauru'
+    fill_in 'Estado', with: 'SP'
+    fill_in 'Email', with: 'acme@yahoo.com.br'
+    fill_in 'CEP', with: '12345-123'
 
-        login_as(user)
+    click_on 'Criar Fornecedor'
 
-        visit root_path
-        within('nav') do 
-            click_on 'Fornecedores'
-        end
-        click_on 'Cadastrar fornecedor'
+    expect(current_path).to eq suppliers_path
+    expect(page).to have_content 'Fornecedor cadastrado com sucesso'
+    expect(page).to have_content 'ACME'
+    expect(page).to have_content 'Bauru'
+  end
 
-        fill_in 'Nome', with: ''
-        fill_in 'Nome fantasia', with:''
-        fill_in 'Número de registro', with:''
-        fill_in 'Endereço', with:''
-        fill_in 'Cidade', with:''
-        fill_in 'Estado', with:''
-        fill_in 'Email', with:''
+  it 'sem sucesso' do
+    user = User.create!(email: 'eduardo@gmail.com', password: 'password123')
 
-        click_on 'Criar Fornecedor'
-        
-        expect(page).to have_content 'Nome não pode ficar em branco'
-        expect(page).to have_content 'Nome fantasia não pode ficar em branco'
-        expect(page).to have_content 'Número de registro não pode ficar em branco'
-        expect(page).to have_content 'Endereço não pode ficar em branco'
-        expect(page).to have_content 'Cidade não pode ficar em branco'
-        expect(page).to have_content 'SP não pode ficar em branco'
-        expect(page).to have_content 'Email não pode ficar em branco'
+    login_as(user)
+
+    visit root_path
+    within('nav') do
+      click_on 'Fornecedores'
     end
+    click_on 'Cadastrar fornecedor'
 
-    it 'com CNPJ inválido' do 
-        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
+    fill_in 'Nome', with: ''
+    fill_in 'Nome fantasia', with: ''
+    fill_in 'Número de registro', with: ''
+    fill_in 'Endereço', with: ''
+    fill_in 'Cidade', with: ''
+    fill_in 'Estado', with: ''
+    fill_in 'Email', with: ''
 
-        login_as(user)
+    click_on 'Criar Fornecedor'
 
-        visit root_path
-        within('nav') do 
-            click_on 'Fornecedores'
-        end
-        click_on 'Cadastrar fornecedor'
+    expect(page).to have_content 'Nome não pode ficar em branco'
+    expect(page).to have_content 'Nome fantasia não pode ficar em branco'
+    expect(page).to have_content 'Número de registro não pode ficar em branco'
+    expect(page).to have_content 'Endereço não pode ficar em branco'
+    expect(page).to have_content 'Cidade não pode ficar em branco'
+    expect(page).to have_content 'SP não pode ficar em branco'
+    expect(page).to have_content 'Email não pode ficar em branco'
+  end
 
-        fill_in 'Nome', with: 'ACME LTDA'
-        fill_in 'Nome fantasia', with:'ACME'
-        fill_in 'Número de registro', with:'0303698900181000'
-        fill_in 'Endereço', with:'Rua das Alamedas, 1200'
-        fill_in 'Cidade', with:'Bauru'
-        fill_in 'Estado', with:'SP'
-        fill_in 'Email', with:'acme@yahoo.com.br'
-        fill_in 'CEP', with:'12345-000'
+  it 'com CNPJ inválido' do
+    user = User.create!(email: 'eduardo@gmail.com', password: 'password123')
 
-        click_on 'Criar Fornecedor'
+    login_as(user)
 
-        expect(page).to have_content 'Número de registro não possui o tamanho esperado (13 caracteres)'
-
+    visit root_path
+    within('nav') do
+      click_on 'Fornecedores'
     end
+    click_on 'Cadastrar fornecedor'
 
-    it 'com CNPJ em já cadastrado' do 
-        user = User.create!(email:'eduardo@gmail.com', password: 'password123')
-        s_2 = Supplier.create!(corporate_name: 'Arcos Douratos LTDA', brand_name:'Mc Donalds', registration_number:'0303698900181',
-            full_address:'Av do Arvoreiro, 3000',city:'Atibaia',state:'SP',email:'mcdonalds@gmail.com.br', cep:'12345-000')
+    fill_in 'Nome', with: 'ACME LTDA'
+    fill_in 'Nome fantasia', with: 'ACME'
+    fill_in 'Número de registro', with: '0303698900181000'
+    fill_in 'Endereço', with: 'Rua das Alamedas, 1200'
+    fill_in 'Cidade', with: 'Bauru'
+    fill_in 'Estado', with: 'SP'
+    fill_in 'Email', with: 'acme@yahoo.com.br'
+    fill_in 'CEP', with: '12345-000'
 
-        
-        login_as(user)
-        visit root_path
-        within('nav') do 
-            click_on 'Fornecedores'
-        end
-        click_on 'Cadastrar fornecedor'
+    click_on 'Criar Fornecedor'
 
-        fill_in 'Nome', with: 'ACME LTDA'
-        fill_in 'Nome fantasia', with:'ACME'
-        fill_in 'Número de registro', with:'0303698900181'
-        fill_in 'Endereço', with:'Rua das Alamedas, 1200'
-        fill_in 'Cidade', with:'Bauru'
-        fill_in 'Estado', with:'SP'
-        fill_in 'Email', with:'acme@yahoo.com.br'
-        fill_in 'CEP', with:'12345-000'
+    expect(page).to have_content 'Número de registro não possui o tamanho esperado (13 caracteres)'
+  end
 
-        click_on 'Criar Fornecedor'
+  it 'com CNPJ em já cadastrado' do
+    user = User.create!(email: 'eduardo@gmail.com', password: 'password123')
+    s_2 = Supplier.create!(corporate_name: 'Arcos Douratos LTDA', brand_name: 'Mc Donalds', registration_number: '0303698900181',
+                           full_address: 'Av do Arvoreiro, 3000', city: 'Atibaia', state: 'SP', email: 'mcdonalds@gmail.com.br', cep: '12345-000')
 
-        expect(page).to have_content 'Número de registro já está em uso'
-
+    login_as(user)
+    visit root_path
+    within('nav') do
+      click_on 'Fornecedores'
     end
+    click_on 'Cadastrar fornecedor'
 
+    fill_in 'Nome', with: 'ACME LTDA'
+    fill_in 'Nome fantasia', with: 'ACME'
+    fill_in 'Número de registro', with: '0303698900181'
+    fill_in 'Endereço', with: 'Rua das Alamedas, 1200'
+    fill_in 'Cidade', with: 'Bauru'
+    fill_in 'Estado', with: 'SP'
+    fill_in 'Email', with: 'acme@yahoo.com.br'
+    fill_in 'CEP', with: '12345-000'
+
+    click_on 'Criar Fornecedor'
+
+    expect(page).to have_content 'Número de registro já está em uso'
+  end
 end

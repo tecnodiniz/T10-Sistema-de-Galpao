@@ -6,3 +6,6 @@
     Usuário responsável: <%=  @order.user.email%>
     Data prevista para entrega: <%= I18n.localize(@order.estimate_delivery_date)  %>
 </div>
+
+
+<%= link_to "Editar pedido", edit_order_path(@order) if is_owner %>
