@@ -3,9 +3,11 @@ require 'rails_helper'
 describe 'Usuario visita tela inicial' do
   it 'e vê o nome da app' do
     # Arrange
+    user = User.create!(email: 'eduardo@example.com', password: 'password')
+    login_as user
 
     # Act
-    visit('/')
+    visit root_path
 
     # Assert
     expect(page).to have_content('Galpões & Estoque')

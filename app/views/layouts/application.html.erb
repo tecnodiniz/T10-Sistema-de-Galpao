@@ -10,36 +10,47 @@
   </head>
 
   <body>
-    <header>
-      <nav>
-        <div class="nav-bar">
-          <div class = "nav-brand">
-             <strong><h1>Galpões & Estoque</h1></strong>
-          </div>
-          <ul>
-            <li> <%= link_to "Galpões", root_path %> </li>
-            <li> <%= link_to "Fornecedores", suppliers_path %> </li>
-             <li> <%= link_to "Produtos", product_models_path %> </li>
-             <li> <%= link_to "Cadastrar pedido", new_order_path %> </li>
-          </ul>
-          <div class = "nav-login">
-            <%if user_signed_in? %>  
-               <%= button_to "Sair", destroy_user_session_path, method: :delete %>
-              <%else%>
-              <%= link_to "Entrar", new_user_session_path %>
+    <%if user_signed_in?%>
+      <header>
+        <nav>
+          <div id="search-order">
+            <%= form_with(url: search_orders_path, method: :get) do |f|%>
+              <%= f.label :query, 'Buscar pedido' %>
+              <%= f.text_field :query  %>
+
+              <%= f.submit 'Buscar'   %>
             <%end%>
+          </div>
+          <div class="nav-bar">
+            <div class = "nav-brand">
+              <strong><h1>Galpões & Estoque</h1></strong>
+            </div>
+            <ul>
+              <li> <%= link_to "Galpões", root_path %> </li>
+              <li> <%= link_to "Fornecedores", suppliers_path %> </li>
+              <li> <%= link_to "Produtos", product_models_path %> </li>
+              <li> <%= link_to "Cadastrar pedido", new_order_path %> </li>
+            </ul>
+            <div class = "nav-login">
+              <%if user_signed_in? %>  
+                <%= button_to "Sair", destroy_user_session_path, method: :delete %>
+                <%else%>
+                <%= link_to "Entrar", new_user_session_path %>
+              <%end%>
+            
+            </div>
           
           </div>
-         
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+    <%end%>
     <main>
-    <p><%= notice %></p>
-    <p><%= alert %></p>
+      <p><%= notice %></p>
+      <p><%= alert %></p>
     
       <%= yield %>
 
     </main>
+
   </body>
 </html>

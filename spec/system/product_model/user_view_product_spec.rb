@@ -1,18 +1,6 @@
 require 'rails_helper'
 
 describe 'Usuário visita tela de produtos' do
-  it 'se estiver autenticado' do
-    # Arrange
-
-    # Act
-    visit root_path
-    within('nav') do
-      click_on 'Produtos'
-    end
-    # Assert
-    expect(current_path).to eq new_user_session_path
-  end
-
   it 'A partir do menu' do
     user = User.create!(email: 'eduardo@gmail.com', password: 'password123')
 

@@ -16,8 +16,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(params_require)
     @order.user = current_user
-    @order.code = SecureRandom.alphanumeric(10)
-
+   
     if @order.save
       redirect_to @order, notice: 'Pedido registrado com sucesso'
     else
@@ -27,6 +26,12 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    
+  end
+
+  def search 
+    @orders = Order.where(code: params[:query])
+    
   end
 
   private 

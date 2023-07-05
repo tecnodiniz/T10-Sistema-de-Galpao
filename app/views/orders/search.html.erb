@@ -1,0 +1,11 @@
+<div>
+  <% if @orders.any?%>
+    Resultado da busca:
+    <%= @orders.count%> pedido encontrado
+
+    <% @orders.each do |order|%>
+      Pedido: <%= link_to order.code, order_path(order)%>
+    <%end%>
+
+  <%end%>
+</div>
