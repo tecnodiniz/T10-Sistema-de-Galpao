@@ -1,11 +1,22 @@
 <h1>Pedido</h1>
 
 <div>
+    Código: <%= @order.code%>
     Galpão: <%= @order.warehouse.name%>
     Fornecedor: <%= @order.supplier.corporate_name%>
     Usuário responsável: <%=  @order.user.email%>
     Data prevista para entrega: <%= I18n.localize(@order.estimate_delivery_date)  %>
+    Status: <%= @order.status%>
 </div>
-
+<div>
+    <h1>Itens do pedido</h1>
+    <ul>
+        <% @order.order_items.each do |item|%>
+            <li><%= item.qtd%> x <%=item.product_model.name%></li>
+        <%end%>
+        
+    </ul>
+</div>
+<%= button_to "Marcar como entregue", delivery_order_path(@order), method: :put %>
 
 <%= link_to "Editar pedido", edit_order_path(@order) if is_owner %>

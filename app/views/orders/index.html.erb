@@ -1,0 +1,7 @@
+<% @orders.each do |order|%> 
+  Código: <%= link_to order.code, order_path(order)%>
+  Galpão: <%= order.warehouse.name%>
+  Usuário responsável: <%= order.user.email%>
+  Data prevista para entrega: <%= order.estimate_delivery_date%>
+  Satus: <%= order.status%>
+<%end%>

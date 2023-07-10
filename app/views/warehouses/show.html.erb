@@ -12,6 +12,17 @@
         <img src = "https://liftlearning.com/wp-content/uploads/2020/09/default-image.png"/>
     </div>
 
+    <div>
+        <h2>Itens do galpão</h2>
+        <ul>
+            <%@warehouse.warehouse_items.each do |item|%>
+                <li><%= item.qtd%> x <%=item.product_model.name%></li>
+
+            <%end%>
+            
+        </ul>
+    </div>
+
 </section>
 
 
